@@ -12,8 +12,7 @@ Automator application that opens an app. Pick the apps, pick a folder, and click
 ## Build
 
 ```bash
-./scripts/build.sh            # creates "dist/AppShortcutCreator.app"
-./scripts/build.sh --install  # also copies it into /Applications
+./scripts/build.sh            # creates "dist/AppShortcutCreator.app"; App Installer installs it
 swift run AppShortcutCreator  # run without making an app bundle
 swift test                    # run the tests
 ```

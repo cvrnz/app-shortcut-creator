@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Builds "dist/AppShortcutCreator.app". Pass --install to also copy it into /Applications.
+# Builds "dist/AppShortcutCreator.app". App Installer (~/main/dev/repos/app-installer) copies it into
+# /Applications.
 # UNIVERSAL=1 builds for both Apple silicon and Intel (requires full Xcode, not just the command line tools).
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -24,9 +25,3 @@ cp "$bin_dir/AppShortcutCreator" "$app/Contents/MacOS/AppShortcutCreator"
 xattr -cr "$app"
 codesign --force --sign - "$app"
 echo "Built $app"
-
-if [[ "${1:-}" == "--install" ]]; then
-  rm -rf "/Applications/AppShortcutCreator.app"
-  cp -R "$app" /Applications/
-  echo "Installed /Applications/AppShortcutCreator.app"
-fi
